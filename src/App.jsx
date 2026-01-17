@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import heroImage from './assets/profile.png';
 import { Menu, X, Github, ExternalLink, Code, Layout, Database, Smartphone, ArrowRight, Mail, Linkedin } from 'lucide-react';
 
 const Portfolio = () => {
@@ -47,7 +48,7 @@ const Portfolio = () => {
       category: "Property Listing Platform",
       desc: "A high-performance real estate template featuring property grids, advanced filtering UI, and interactive map integration placeholders.",
       stack: ["HTML5", "CSS Grid", "JavaScript"],
-      link: "#", 
+      link: "#",
       repo: "#"
     }
   ];
@@ -59,7 +60,7 @@ const Portfolio = () => {
       category: "Medical Website",
       desc: "Trust-building design for medical professionals with appointment booking forms and service breakdowns.",
       stack: ["HTML5", "Bootstrap", "Responsive"],
-      link: "#", 
+      link: "#",
       repo: "#"
     },
     {
@@ -67,7 +68,7 @@ const Portfolio = () => {
       category: "Hospitality Site",
       desc: "Visual-heavy layout for restaurants featuring menu displays, gallery sliders, and reservation CTAs.",
       stack: ["HTML5", "CSS Animation", "JS"],
-      link: "#", 
+      link: "#",
       repo: "#"
     },
     {
@@ -75,7 +76,7 @@ const Portfolio = () => {
       category: "Portfolio Template",
       desc: "Modern, dark-themed portfolio for creative agencies to showcase work and attract high-ticket clients.",
       stack: ["React", "Tailwind", "Framer Motion"],
-      link: "#", 
+      link: "#",
       repo: "#"
     },
     {
@@ -83,7 +84,7 @@ const Portfolio = () => {
       category: "Local Service Site",
       desc: "Conversion-focused layout for emergency services. Features click-to-call buttons and immediate trust signals.",
       stack: ["HTML5", "CSS3", "Lead Gen"],
-      link: "#", 
+      link: "#",
       repo: "#"
     }
   ];
@@ -93,119 +94,132 @@ const Portfolio = () => {
   // Function to handle "Show Less" scroll behavior
   const handleToggle = () => {
     if (showAllProjects) {
-        // If we are currently showing all, and clicking "Show Less", scroll back up to portfolio top
-        const portfolioSection = document.getElementById('portfolio');
-        if (portfolioSection) {
-            portfolioSection.scrollIntoView({ behavior: 'smooth' });
-        }
+      // If we are currently showing all, and clicking "Show Less", scroll back up to portfolio top
+      const portfolioSection = document.getElementById('portfolio');
+      if (portfolioSection) {
+        portfolioSection.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setShowAllProjects(!showAllProjects);
   };
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
-      
+
       {/* --- NAVIGATION --- */}
-      <nav className="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="font-bold text-xl text-blue-900">Haris Rindh<span className="text-blue-500">.</span></div>
-            
-            <div className="hidden md:flex space-x-8">
-              <a href="#about" className="hover:text-blue-600 transition">About</a>
-              <a href="#services" className="hover:text-blue-600 transition">Services</a>
-              <a href="#portfolio" className="hover:text-blue-600 transition">Portfolio</a>
-              <a href="#contact" className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Hire Me</a>
-            </div>
+      <nav className="fixed w-full bg-white/80 backdrop-blur-md border-b border-slate-200 z-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-20"> {/* Increased height to h-20 for elegance */}
+      
+      {/* Logo */}
+      <div className="flex-shrink-0 flex items-center">
+        <span className="font-bold text-2xl text-slate-900 tracking-tight">
+          Haris Rindh<span className="text-blue-600">.</span>
+        </span>
+      </div>
+      
+      {/* Desktop Menu */}
+      <div className="hidden md:flex items-center space-x-8">
+        <a href="#about" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition" onClick={() => setShowAllProjects(false)}>About</a>
+        <a href="#services" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition" onClick={() => setShowAllProjects(false)}>Services</a>
+        <a href="#portfolio" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition">Portfolio</a>
+        <a href="#contact" className="px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+          Hire Me
+        </a>
+      </div>
 
-            <div className="md:hidden">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                {isMenuOpen ? <X /> : <Menu />}
-              </button>
-            </div>
-          </div>
-        </div>
+      {/* Mobile Menu Button */}
+      <div className="md:hidden flex items-center">
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-slate-600 hover:text-blue-600 p-2">
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+    </div>
+  </div>
 
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t p-4 space-y-4 shadow-lg">
-            <a href="#about" className="block text-slate-600 hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>About</a>
-            <a href="#services" className="block text-slate-600 hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>Services</a>
-            <a href="#portfolio" className="block text-slate-600 hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>Portfolio</a>
-            <a href="#contact" className="block text-blue-600 font-semibold" onClick={() => setIsMenuOpen(false)}>Hire Me</a>
-          </div>
-        )}
-      </nav>
+  {/* Mobile Dropdown */}
+  {isMenuOpen && (
+    <div className="md:hidden bg-white border-t border-slate-100 px-4 pt-2 pb-6 shadow-xl space-y-2">
+      <a href="#about" className="block py-3 text-base font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 rounded-md" onClick={() => setIsMenuOpen(false)}>About</a>
+      <a href="#services" className="block py-3 text-base font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 rounded-md" onClick={() => setIsMenuOpen(false)}>Services</a>
+      <a href="#portfolio" className="block py-3 text-base font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 rounded-md" onClick={() => setIsMenuOpen(false)}>Portfolio</a>
+      <a href="#contact" className="block py-3 text-base font-bold text-blue-600 bg-blue-50 px-3 rounded-md mt-2" onClick={() => setIsMenuOpen(false)}>Hire Me</a>
+    </div>
+  )}
+</nav>
 
       {/* --- HERO SECTION (Always Visible) --- */}
       <section id="about" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <div className="text-center md:text-left md:flex items-center justify-between">
-            <div className="md:w-1/2">
+          <div className="md:w-1/2">
             <p className="text-blue-600 font-semibold tracking-wide uppercase mb-2">Full-Stack Developer</p>
             <h1 className="text-4xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-                I Build Digital Assets, Not Just Websites.
+              I Build Digital Assets, Not Just Websites.
             </h1>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                I help businesses turn visitors into customers. Whether you need a corporate identity or a complex web application, I build solutions that work.
+              I help businesses turn visitors into customers. Whether you need a corporate identity or a complex web application, I build solutions that work.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a href="#contact" className="px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition text-center shadow-lg hover:shadow-xl">
+              <a href="#contact" className="px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition text-center shadow-lg hover:shadow-xl">
                 Start Your Project
-                </a>
-                <a href="#portfolio" className="px-8 py-3 bg-white text-slate-700 border border-slate-300 rounded-lg font-medium hover:bg-slate-50 transition text-center">
+              </a>
+              <a href="#portfolio" className="px-8 py-3 bg-white text-slate-700 border border-slate-300 rounded-lg font-medium hover:bg-slate-50 transition text-center">
                 View My Work
-                </a>
+              </a>
             </div>
-            </div>
-            <div className="hidden md:block md:w-5/12">
-            <div className="aspect-square bg-gradient-to-tr from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center border border-blue-100 shadow-inner">
-                <Code className="w-32 h-32 text-blue-200" />
-            </div>
-            </div>
+          </div>
+          <div className="w-full max-w-sm mx-auto md:w-5/12 md:max-w-none mt-8 md:mt-0">
+   <img 
+     src={heroImage} 
+     alt="Haris Rindh" 
+     className="w-full h-auto rounded-2xl shadow-2xl transform hover:scale-105 transition duration-500 bg-slate-100" 
+   />
+</div>
         </div>
       </section>
 
       {/* --- SERVICES SECTION (Always Visible) --- */}
       <section id="services" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+          <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-slate-900">How I Can Help You</h2>
             <p className="text-slate-600 mt-4 max-w-2xl mx-auto">I don't just write code; I provide solutions designed to grow your business.</p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8">
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-                <div key={index} className="p-8 bg-slate-50 rounded-xl hover:shadow-lg transition duration-300 border border-slate-100">
+              <div key={index} className="p-8 bg-slate-50 rounded-xl hover:shadow-lg transition duration-300 border border-slate-100">
                 <div className="mb-4 bg-white p-3 w-fit rounded-lg shadow-sm border border-slate-100">{service.icon}</div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{service.desc}</p>
-                </div>
+              </div>
             ))}
-            </div>
+          </div>
         </div>
       </section>
 
       {/* --- PORTFOLIO SECTION --- */}
       <section id="portfolio" className="py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
               <h2 className="text-3xl font-bold text-slate-900">
                 {showAllProjects ? "All Projects Archive" : "Featured Projects"}
               </h2>
               <p className="text-slate-600 mt-2">
-                {showAllProjects 
-                  ? "A complete list of my technical work, templates, and client sites." 
+                {showAllProjects
+                  ? "A complete list of my technical work, templates, and client sites."
                   : "A selection of my recent technical and commercial work."}
               </p>
             </div>
-            
+
             {/* TOGGLE BUTTON (Desktop) */}
-            <button 
-                onClick={handleToggle}
-                className="hidden md:flex items-center text-blue-600 hover:text-blue-700 font-medium mt-4 md:mt-0 cursor-pointer"
+            <button
+              onClick={handleToggle}
+              className="hidden md:flex items-center text-blue-600 hover:text-blue-700 font-medium mt-4 md:mt-0 cursor-pointer"
             >
-                {showAllProjects ? "Show Less" : "View All Projects"} 
-                <ArrowRight className={`w-4 h-4 ml-2 transition-transform ${showAllProjects ? 'rotate-180' : ''}`} />
+              {showAllProjects ? "Show Less" : "View All Projects"}
+              <ArrowRight className={`w-4 h-4 ml-2 transition-transform ${showAllProjects ? 'rotate-180' : ''}`} />
             </button>
           </div>
 
@@ -215,7 +229,7 @@ const Portfolio = () => {
                 <div className="h-2 bg-blue-600 w-0 group-hover:w-full transition-all duration-500"></div>
                 <div className="p-6 flex-1">
                   <div className="flex justify-between items-start">
-                     <div className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2">{project.category}</div>
+                    <div className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2">{project.category}</div>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">{project.title}</h3>
                   <p className="text-slate-600 text-sm mb-4 leading-relaxed">{project.desc}</p>
@@ -238,14 +252,14 @@ const Portfolio = () => {
               </div>
             ))}
           </div>
-          
+
           {/* TOGGLE BUTTON (Mobile) */}
           <div className="mt-8 text-center md:hidden">
-            <button 
-                onClick={handleToggle} 
-                className={`inline-flex items-center justify-center px-6 py-3 border font-medium rounded-lg ${showAllProjects ? 'border-slate-300 text-slate-600 hover:bg-slate-50' : 'border-blue-600 text-blue-600 hover:bg-blue-50'}`}
+            <button
+              onClick={handleToggle}
+              className={`inline-flex items-center justify-center px-6 py-3 border font-medium rounded-lg ${showAllProjects ? 'border-slate-300 text-slate-600 hover:bg-slate-50' : 'border-blue-600 text-blue-600 hover:bg-blue-50'}`}
             >
-                {showAllProjects ? "Show Less" : "View All Projects"}
+              {showAllProjects ? "Show Less" : "View All Projects"}
             </button>
           </div>
 
@@ -259,7 +273,7 @@ const Portfolio = () => {
           <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
             I am currently available for freelance projects. Whether you need a simple business site or a complex web app, I’m ready to help.
           </p>
-          
+
           <div className="flex flex-col md:flex-row justify-center gap-6">
             <a href="mailto:your-email@example.com" className="flex items-center justify-center px-8 py-4 bg-white text-blue-900 rounded-lg font-bold hover:bg-blue-50 transition shadow-lg">
               <Mail className="w-5 h-5 mr-3" />
