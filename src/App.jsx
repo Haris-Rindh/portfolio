@@ -5,6 +5,8 @@ import {
   Terminal, Cpu, Globe, Server, ChevronDown, CheckCircle
 } from 'lucide-react';
 
+// Using a placeholder URL to ensure the code runs immediately without local file errors.
+// You can replace this string with your local import later: import heroImage from './assets/profile.jpg';
 const heroImage = "src/assets/Haris-Rindh.png";
 
 const Portfolio = () => {
@@ -51,7 +53,7 @@ const Portfolio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // --- FEATURE: Set Favicon to Profile Image ---
+  // --- FEATURE: Set Favicon ---
   useEffect(() => {
     const link = document.querySelector("link[rel~='icon']");
     if (!link) {
@@ -83,7 +85,7 @@ const Portfolio = () => {
     }
   ];
 
-  // Complete Project List
+  // Complete Project List (8 Items)
   const allProjects = [
     {
       title: "Nexus AI",
@@ -113,15 +115,15 @@ const Portfolio = () => {
       link: "https://haris-rindh.github.io/Umer-Surveying/",
       repo: "https://github.com/Haris-Rindh/Umer-Surveying",
       featured: false,
-      image: "src/assets/umer-serveying.png"
+      image: "./src/assets/umer-serveying.png"
     },
     {
       title: "Prime Real Estate",
       category: "Property Platform",
       desc: "High-performance property listing template with filtering logic, map integrations, and agent profiles.",
       stack: ["React", "Tailwind", "Framer Motion"],
-      link: "#",
-      repo: "#",
+      link: "https://skyline-apartments-two.vercel.app/",
+      repo: "https://github.com/Haris-Rindh/Skyline-apartments.git",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800"
     },
     {
@@ -129,8 +131,8 @@ const Portfolio = () => {
       category: "Medical Website",
       desc: "Clean, trust-building design for a dental clinic featuring appointment scheduling and service breakdowns.",
       stack: ["HTML5", "Bootstrap", "Responsive"],
-      link: "#",
-      repo: "#",
+      link: "https://zenith-dental-one.vercel.app/",
+      repo: "https://github.com/Haris-Rindh/Zenith-dental.git",
       image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800"
     },
     {
@@ -138,8 +140,8 @@ const Portfolio = () => {
       category: "Hospitality",
       desc: "Visual-heavy layout for a modern restaurant with menu galleries and reservation forms.",
       stack: ["React", "CSS Modules", "Animation"],
-      link: "#",
-      repo: "#",
+      link: "https://rustic-spoon-nu.vercel.app/",
+      repo: "https://github.com/Haris-Rindh/rustic-spoon.git",
       image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800"
     },
     {
@@ -147,8 +149,8 @@ const Portfolio = () => {
       category: "Portfolio Template",
       desc: "Modern, dark-themed portfolio for creative agencies to showcase work and attract high-ticket clients.",
       stack: ["React", "Tailwind", "Framer Motion"],
-      link: "#",
-      repo: "#",
+      link: "https://neongrowth.vercel.app/",
+      repo: "https://github.com/Haris-Rindh/neongrowth.git",
       image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800"
     },
     {
@@ -156,12 +158,13 @@ const Portfolio = () => {
       category: "Local Service Site",
       desc: "Conversion-focused layout for emergency services. Features click-to-call buttons and immediate trust signals.",
       stack: ["HTML5", "CSS3", "Lead Gen"],
-      link: "#",
-      repo: "#",
+      link: "https://swiftfix-plumbing.vercel.app/",
+      repo: "https://github.com/Haris-Rindh/swiftfix-plumbing-landing.git",
       image: "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=800"
     }
   ];
 
+  // Logic to show 3 or All
   const visibleProjects = showAllProjects ? allProjects : allProjects.slice(0, 3);
 
   // Function to handle "Show Less" scroll behavior
@@ -422,7 +425,7 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {/* --- BOTTOM BUTTONS --- */}
+          {/* --- BOTTOM BUTTONS (CENTERED) --- */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 mt-16">
              <button 
                 onClick={handleToggle}
@@ -431,6 +434,7 @@ const Portfolio = () => {
                {showAllProjects ? "Show Less" : "View All Projects"}
                <ChevronDown size={20} className={`transform transition-transform ${showAllProjects ? "rotate-180" : ""}`} />
              </button>
+             
              <a 
                href="https://github.com/Haris-Rindh" 
                target="_blank" 
